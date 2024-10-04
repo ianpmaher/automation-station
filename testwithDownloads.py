@@ -150,7 +150,7 @@ ok_button = WebDriverWait(driver, 30).until(
     EC.element_to_be_clickable((By.XPATH, '//*[@tabindex="99"]'))
 )
 
-print(ok_button.text)
+ok_button.click()
 
 time.sleep(40)  # Increase the wait time if the PDF takes longer to download
 
@@ -166,9 +166,10 @@ if pdf_url.endswith(".pdf"):
         print("PDF saved as output.pdf")
 
 
-driver.quit()
 
 print(f"PDF should be downloaded to: {download_dir}")
+
+driver.quit()
 
 # ok_button.click()
 

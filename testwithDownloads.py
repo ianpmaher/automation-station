@@ -170,23 +170,3 @@ if pdf_url.endswith(".pdf"):
 print(f"PDF should be downloaded to: {download_dir}")
 
 driver.quit()
-
-# ok_button.click()
-
-
-# for attempt in range(3):
-#   try:
-#     ok_button = WebDriverWait(driver, 10).until(EC.element_to_be_clickable((By.XPATH, '//*[@id="okButton"]')))
-#     # Use ActionChains to move to and click the element
-#     actions = ActionChains(driver)
-#     actions.move_to_element(ok_button).click().perform()
-#     break
-#   except (StaleElementReferenceException, TimeoutException) as e:
-#     print(f"Attempt {attempt + 1} failed: {e}")
-#     continue
-
-
-#run_button.click()
-# driver.execute_script("arguments[0].click();", run_button)
-# Close the driver
-# driver.quit()

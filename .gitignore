@@ -83,6 +83,7 @@ share/python-wheels/
 .installed.cfg
 *.egg
 MANIFEST
+output_transcripts/
 
 # PyInstaller
 #  Usually these files are written by a python script from a template
@@ -198,3 +199,6 @@ dmypy.json
 
 # virtual machine crash logs, see http://www.java.com/en/download/help/error_hotspot.xml
 hs_err_pid*
+
+report756.pdf
+senior_names.csv

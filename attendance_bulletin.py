@@ -16,7 +16,7 @@ ASPEN_URL=os.getenv("ASPEN_URL")
 LOGIN_ID = os.getenv("LOGIN_ID")
 PASSWORD = os.getenv("PASSWORD")
 
-download_dir = os.path.join(os.getcwd(), "downloads/principalattendance")  # Downloads to the "downloads" folder in your project
+download_dir = os.path.join(os.getcwd(), "downloads/bulletin")  # Downloads to the "downloads" folder in your project
 if not os.path.exists(download_dir):
     os.makedirs(download_dir)
 
@@ -69,9 +69,9 @@ driver.implicitly_wait(2)
 reports_menusub1 = driver.find_element(By.ID, "reportsMenuSub1")
 reports_menusub1.click()
 
-# principal attendance report
-principal_attendance_report = driver.find_element(By.XPATH, "/html/body/form/table/tbody/tr[2]/td/div/table[2]/tbody/tr[1]/td[2]/table[1]/tbody/tr/td[3]/div[2]/table/tbody/tr[7]/td[3]/div/table/tbody/tr[14]/td[2]")
-principal_attendance_report.click()
+# ATTENDANCE BULLET REPORT
+consecutive_absence_report = driver.find_element(By.XPATH, "/html/body/form/table/tbody/tr[2]/td/div/table[2]/tbody/tr[1]/td[2]/table[1]/tbody/tr/td[3]/div[2]/table/tbody/tr[7]/td[3]/div/table/tbody/tr[1]/td[2]")
+consecutive_absence_report.click()
 # Wait for the page to load
 driver.implicitly_wait(5)
 
@@ -99,38 +99,7 @@ WebDriverWait(driver, 5).until(
 # element of table containing options
 table = driver.find_element(By.CLASS_NAME, "detailContainer")
 # start date
-start_date = driver.find_element(By.ID, "parametersAsStrings(startDate)")
-#start_date = driver.find(By.XPATH, "/html/body/table/tbody/tr[2]/td/form/table/tbody/tr[3]/td/div/table/tbody/tr[3]/td[2]/table/tbody/tr/td[1]/input")
-# remove the default date
-start_date.clear()
-# enter the date
-start_date.send_keys("08/28/2024")
-# end date
-end_date = driver.find_element(By.ID, "parametersAsStrings(endDate)")
-# remove the default date
-end_date.clear()
-# Get today's date in the required format
-today_date = datetime.today().strftime('%m/%d/%Y')
-end_date.send_keys(today_date)
-print(today_date)
-
-# absences options
-absences_operator = driver.find_element(By.NAME, "parametersAsStrings(attribute_operator_a)")
-Select(absences_operator).select_by_value("2")
-# print(absences_operator.text)
-# print(absences_operator.get_attribute("value"))
-
-# absences value
-absences_value = driver.find_element(By.XPATH, "/html/body/table/tbody/tr[2]/td/form/table/tbody/tr[3]/td/div/table/tbody/tr[7]/td[2]/table/tbody/tr[3]/td[4]/input")
-# remove the default value
-absences_value.clear()
-# absences greaer than or equal to 4 *******
-absences_value.send_keys("4")
-
-# exclude excused absences
-# excluded_checkbox = driver.find_element(By.ID, "parametersAsStrings(attribute_excludeExcused_a)")
-# set the checkbox to be checked aka boolean value of true
-# excluded_checkbox.click()
+# DEFAULT DATE IS TODAY, SO NO NEED TO CHANGE
 
 '''
 ==================== OPTIONS ====================

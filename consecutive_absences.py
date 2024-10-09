@@ -16,7 +16,7 @@ ASPEN_URL=os.getenv("ASPEN_URL")
 LOGIN_ID = os.getenv("LOGIN_ID")
 PASSWORD = os.getenv("PASSWORD")
 
-download_dir = os.path.join(os.getcwd(), "downloads")  # Downloads to the "downloads" folder in your project
+download_dir = os.path.join(os.getcwd(), "downloads/consecutive")  # Downloads to the "downloads" folder in your project
 if not os.path.exists(download_dir):
     os.makedirs(download_dir)
 

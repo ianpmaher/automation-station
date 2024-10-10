@@ -23,7 +23,7 @@ if not os.path.exists(download_dir):
     os.makedirs(download_dir)
     
 # Configure the path for the Chromium WebDriver
-chromium_service = Service('/usr/lib/chromium-browser/chromedriver')
+chromium_service = Service('/usr/bin/chromedriver')
 
 chrome_options = webdriver.ChromeOptions()
 # Set up options for Chromium (such as headless mode, which is optional)

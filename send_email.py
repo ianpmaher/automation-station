@@ -9,7 +9,7 @@ from email.mime.text import MIMEText
 import glob
 
 load_dotenv()
-DESTINATION_EMAIL = os.getenv("EMAIL_DESTINATION")
+DESTINATION_EMAILS = os.getenv("EMAIL_DESTINATION").split(',')
 EMAIL_SENDER = os.getenv("EMAIL_SENDER")
 EMAIL_PASSWORD = os.getenv("EMAIL_PASSWORD")
 EMAIL_SERVER = os.getenv("EMAIL_SERVER")
@@ -71,21 +71,22 @@ def send_email_with_pdfs(sender_email, recipient_email, subject, body, pdf_files
 
 if __name__ == '__main__':
     # Run the scripts to generate PDFs
-    scripts = ['attendance_bulletin.py', 'consecutive_absences.py', 'principals_attendance_DOWNLOADS.py']
+    # scripts = ['attendance_bulletin.py', 'consecutive_absences.py', 'principals_attendance_DOWNLOADS.py']
+    scripts = ['combo_bulletin.py', 'consecutive_absences.py', 'principals_attendance_DOWNLOADS.py']
     for script in scripts:
         subprocess.run(['python3', script])
 
     # Get the most recent PDFs from the specified directories
     pdf1 = get_most_recent_pdf('downloads/consecutive')
-    pdf2 = get_most_recent_pdf('downloads/bulletin')
+    pdf2 = get_most_recent_pdf('downloads/combo')
     pdf3 = get_most_recent_pdf('downloads/principalattendance')
 
     # Create a list of the most recent PDFs
     recent_pdfs = [pdf1, pdf2, pdf3]
 
     # Your email details
-    sender = 'youremail@gmail.com'
-    recipient = DESTINATION_EMAIL    
+    sender = EMAIL_SENDER
+    # recipient = DESTINATION_EMAIL    
     subject = 'Generated Reports'
     body = 'Please find the most recent reports attached.'
 
@@ -96,4 +97,5 @@ if __name__ == '__main__':
     password = EMAIL_PASSWORD
 
     # Send the email with the most recent PDFs attached
-    send_email_with_pdfs(sender, recipient, subject, body, recent_pdfs, smtp_server, smtp_port, login, password)
+    for recipient in DESTINATION_EMAILS:
+        send_email_with_pdfs(sender, recipient.strip(), subject, body, recent_pdfs, smtp_server, smtp_port, login, password)

@@ -29,7 +29,7 @@ chrome_options = webdriver.ChromeOptions()
 # Set up options for Chromium (such as headless mode, which is optional)
 chrome_options = Options()
 chrome_options.binary_location = '/usr/bin/chromium-browser'
-chrome_options.add_argument('--headless')  # Use headless mode (no UI)
+# chrome_options.add_argument('--headless')  # Use headless mode (no UI)
 chrome_options.add_argument('--no-sandbox')
 chrome_options.add_argument('--disable-dev-shm-usage')
 

@@ -84,6 +84,7 @@ share/python-wheels/
 *.egg
 MANIFEST
 output_transcripts/
+output_transcripts_q1/
 output_schedules/
 
 # PyInstaller
@@ -203,3 +204,4 @@ hs_err_pid*
 
 report*.pdf
 senior_names.csv
+seniors_q1.pdf

@@ -31,7 +31,7 @@ def split_pdf_by_student_names(input_pdf_path, student_names, output_folder):
             writer.add_page(page)
             
             # Create the output file name with "FirstName LastName transcript initial.pdf"
-            output_filename = f"{student_name} transcript {page_num + 1}.pdf"
+            output_filename = f"{student_name} transcript Q1 {page_num + 1}.pdf"
             output_filepath = os.path.join(output_folder, output_filename)
             
             # Write the page to a new PDF file
@@ -45,8 +45,8 @@ csv_path = 'senior_names.csv'
 student_names = load_student_names_no_header(csv_path)
 
 # Path to the uploaded PDF and the output folder
-input_pdf_path = 'report756.pdf'
-output_folder = 'output_transcripts'
+input_pdf_path = 'seniors_q1.pdf'
+output_folder = 'output_transcripts_q1'
 
 # Split the PDF by student names
 split_pdf_by_student_names(input_pdf_path, student_names, output_folder)
